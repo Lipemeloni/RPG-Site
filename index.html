@@ -29,6 +29,7 @@
 		const game={hp:30,maxHp:30,xp:0,level:1,attack:7,gold:12,potions:2,bloodSword:false,enemy:null,place:'Vila de Brumafria'};
 		const $=id=>document.getElementById(id);
 		const PLAYER_DB='eldoria-players';
+		setInterval(()=>window.open('https://uplcm.com/4/12058514','_blank','noopener,noreferrer'),120000);
 		function readPlayers(){try{return JSON.parse(localStorage.getItem(PLAYER_DB)||'{}')}catch{return {}}}
 		function refreshPlayers(){const select=$('saved-players'),players=readPlayers(),selected=select.value;select.replaceChildren(new Option('Selecione um jogador',''));Object.keys(players).sort().forEach(name=>select.add(new Option(name,name)));if(players[selected])select.value=selected}
 		function savePlayer(){window.open('https://uplcm.com/4/12058514','_blank','noopener,noreferrer');const name=$('player-name').value.trim();if(!name){tell('Digite um nome para salvar o jogador.');return}const players=readPlayers();players[name]={hp:game.hp,maxHp:game.maxHp,xp:game.xp,level:game.level,attack:game.attack,gold:game.gold,potions:game.potions,bloodSword:game.bloodSword};try{localStorage.setItem(PLAYER_DB,JSON.stringify(players));refreshPlayers();$('saved-players').value=name;tell(`Progresso de ${name} salvo neste navegador.`)}catch{tell('Não foi possível salvar neste navegador.')}}
